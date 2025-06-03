@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wafinga - Pro Running Timer</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta name="theme-color" content="#64b5f6">
+</head>
+<body>
+    <div class="container">
+        <!-- Pantalla inicial con botones de semanas -->
+        <div id="week-selection-screen">
+            
+            
+            <div class="week-buttons">
+                <button class="warmup-only-btn" id="warmup-only-btn">
+                    <span class="warmup-icon">🔥</span>
+                    <span class="warmup-title">Calentamiento</span>
+                    <span class="warmup-subtitle">Rutina de estiramientos interactiva</span>
+                </button>
+                
+                <button class="week-btn" data-week="1">
+                    <span class="week-number">Semana 1</span>
+                    <span class="week-description">1 min correr + 4 min caminar</span>
+                </button>
+                
+                <button class="week-btn" data-week="2">
+                    <span class="week-number">Semana 2</span>
+                    <span class="week-description">2 min correr + 3 min caminar</span>
+                </button>
+                
+                <button class="week-btn" data-week="3">
+                    <span class="week-number">Semana 3</span>
+                    <span class="week-description">3 min correr + 2 min caminar</span>
+                </button>
+                
+                <button class="week-btn" data-week="4">
+                    <span class="week-number">Semana 4</span>
+                    <span class="week-description">4 min correr + 1 min caminar</span>
+                </button>
+                
+                <button class="week-btn" data-week="5">
+                    <span class="week-number">Semana 5</span>
+                    <span class="week-description">20 min trote suave + 3 min recuperación</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Pantalla de calentamiento (oculta inicialmente) -->
+        <div id="warmup-screen" style="display: none;">
+            <div class="back-button-container">
+                <button id="back-from-warmup-btn" class="back-btn">← Volver a Selección</button>
+            </div>
+
+            <div class="program-info">
+                <h2>🔥 Calentamiento Interactivo</h2>
+                <div>
+                    <p><strong>Duración:</strong> 15 segundos por ejercicio</p>
+                    <p><strong>Total de ejercicios:</strong> 11 estiramientos</p>
+                    <p><strong>Tiempo total:</strong> ~3 minutos</p>
+                </div>
+            </div>
+
+            <div class="warmup-interactive" id="warmup-interactive-standalone" style="display: none;">
+                <div class="current-exercise">
+                    <h4 id="current-exercise-name-standalone">Ejercicio</h4>
+                    <div class="exercise-timer" id="exercise-timer-standalone">15</div>
+                    <div class="exercise-progress">
+                        <span id="exercise-counter-standalone">1</span> / <span id="total-exercises-standalone">11</span>
+                    </div>
+                </div>
+                <div class="warmup-controls">
+                    <button id="pause-warmup-standalone" class="btn pause-btn">Pausar</button>
+                    <button id="skip-exercise-standalone" class="btn">Saltar</button>
+                </div>
+            </div>
+
+            <div class="warmup-list" id="warmup-list-standalone">
+                <div class="warmup-item">15s Rotar cabeza</div>
+                <div class="warmup-item">15s Rotar hombros</div>
+                <div class="warmup-item">15s Rotar brazos</div>
+                <div class="warmup-item">15s Girar tronco</div>
+                <div class="warmup-item">15s Troncos lateral</div>
+                <div class="warmup-item">15s Rotación cadera</div>
+                <div class="warmup-item">15s Rotación rodillas</div>
+                <div class="warmup-item">15s Rotación tobillos</div>
+                <div class="warmup-item">15s Elevación rodillas</div>
+                <div class="warmup-item">15s Balanceo piernas adelante/atrás</div>
+                <div class="warmup-item">15s Balanceo piernas lateral</div>
+            </div>
+            
+            <button id="start-warmup-standalone" class="btn warmup-btn">Iniciar Calentamiento</button>
+        </div>
+
+        <!-- Pantalla del cronómetro (oculta inicialmente) -->
+        <div id="timer-screen" style="display: none;">
+            <div class="back-button-container">
+                <button id="back-btn" class="back-btn">← Volver a Selección</button>
+            </div>
+
+            <div class="program-info">
+                <h2 id="program-title">Programa de Entrenamiento</h2>
+                <div id="program-details"></div>
+            </div>
+
+            
+
+            <div class="timer-section">
+                <div class="timer-display">
+                    <div class="time" id="time">20:00</div>
+                    <div class="phase" id="phase">Listo para empezar</div>
+                    <div class="interval-info" id="interval-info"></div>
+                </div>
+
+                <div class="controls">
+                    <button id="start-btn" class="btn start-btn">Iniciar</button>
+                    <button id="pause-btn" class="btn pause-btn" disabled>Pausar</button>
+                    <button id="reset-btn" class="btn reset-btn">Reiniciar</button>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="stats" id="stats"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
